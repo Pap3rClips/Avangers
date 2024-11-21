@@ -187,6 +187,12 @@ nav {
     margin-top: 2rem;
     position: relative;
     overflow: hidden;
+    
+}
+
+.download2-btn{
+  text-decoration: none; /* Enlève le soulignement */
+  color: inherit;
 }
 
 .download-btn:hover {
