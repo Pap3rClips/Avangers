@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S - Anthony Stark</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../projects.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">A.S</div>
+            <div class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../about.html">À propos</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="project-details">
+            <header class="project-header">
+                <h1>J.A.R.V.I.S</h1>
+                <p class="project-subtitle">Assistant virtuel intelligent</p>
+            </header>
+
+            <section class="project-overview">
+                <div class="project-image">
+                    <img src="../assets/jarvis-preview.jpg" alt="Interface JARVIS">
+                </div>
+                <div class="project-description">
+                    <h2>Vue d'ensemble</h2>
+                    <p>J.A.R.V.I.S (Just A Rather Very Intelligent System) est un assistant virtuel conçu pour automatiser la gestion de projet et améliorer la productivité des équipes de développement.</p>
+                    
+                    <h3>Technologies utilisées</h3>
+                    <ul class="tech-list">
+                        <li>Node.js</li>
+                        <li>OpenAI API</li>
+                        <li>WebSocket</li>
+                        <li>Express.js</li>
+                    </ul>
+
+                    <h3>Fonctionnalités clés</h3>
+                    <ul>
+                        <li>Analyse automatique du code</li>
+                        <li>Suggestions d'optimisation</li>
+                        <li>Gestion des tâches intelligente</li>
+                        <li>Intégration avec GitHub</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="project-details-section">
+                <h2>Défis techniques</h2>
+                <p>L'un des principaux défis était d'implémenter un système de traitement du langage naturel performant qui puisse comprendre le contexte des projets de développement.</p>
+                
+                <div class="code-example">
+                    <h3>Exemple d'utilisation</h3>
+                    <pre><code>
+const jarvis = new JARVISAssistant();
+await jarvis.analyzeProject({
+    repository: 'user/project',
+    branch: 'main'
+});
+
+const suggestions = await jarvis.getSuggestions();
+                    </code></pre>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2024 Anthony Stark. Tous droits réservés.</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

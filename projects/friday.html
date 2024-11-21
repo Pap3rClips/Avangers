@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F.R.I.D.A.Y - Anthony Stark</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../projects.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">A.S</div>
+            <div class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../about.html">À propos</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <article class="project-details">
+            <header class="project-header">
+                <h1>F.R.I.D.A.Y</h1>
+                <p class="project-subtitle">Interface de gestion intelligente</p>
+            </header>
+
+            <section class="project-overview">
+                <div class="project-image">
+                    <img src="../assets/friday-preview.jpg" alt="Interface FRIDAY">
+                </div>
+                <div class="project-description">
+                    <h2>Vue d'ensemble</h2>
+                    <p>F.R.I.D.A.Y est une interface de gestion de tâches intelligente qui utilise l'apprentissage automatique pour optimiser la productivité.</p>
+                    
+                    <h3>Technologies utilisées</h3>
+                    <ul class="tech-list">
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>MongoDB</li>
+                        <li>Socket.IO</li>
+                    </ul>
+
+                    <h3>Fonctionnalités</h3>
+                    <ul>
+                        <li>Planification intelligente</li>
+                        <li>Suggestions contextuelles</li>
+                        <li>Collaboration en temps réel</li>
+                        <li>Analyses prédictives</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="project-details-section">
+                <h2>Interface utilisateur</h2>
+                <div class="code-example">
+                    <pre><code>
+import { useFriday } from '@friday/core';
+
+function TaskManager() {
+    const { tasks, schedule, optimize } = useFriday();
+    
+    return (
+        <div className="dashboard">
+            <TaskList tasks={tasks} />
+            <Timeline schedule={schedule} />
+            <OptimizeButton onClick={optimize} />
+        </div>
+    );
+}
+                    </code></pre>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2024 Anthony Stark. Tous droits réservés.</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
