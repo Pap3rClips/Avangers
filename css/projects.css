@@ -1,3 +1,28 @@
+
+
+
+#jerico_img {
+    width: 630px;
+    height: 730px;
+}
+
+#friday_img {
+    height: 400px;
+}
+
+#mark_img {
+    height: 471px; 
+}
+
+#ultron_img {
+    height: 400px;
+}
+
+#jarvis_img {
+    height: 430px;
+}
+
+
 /* Project Pages Styles */
 .project-details {
     max-width: 1200px;
@@ -195,3 +220,5 @@ button[type="submit"]:hover {
         grid-template-columns: 1fr;
     }
 }
+
+
