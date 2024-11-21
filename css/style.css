@@ -269,9 +269,8 @@ section.about {
     gap: 20px;
   }
   
-  /* Texte de la section */
   .about-text {
-    flex: 1 1 100%; /* Occupe toute la largeur */
+    flex: 1 1 100%; 
   }
   
   .about-text p {
@@ -363,7 +362,6 @@ section.contact {
     max-width: 800px;
     margin: 50px auto; /* Centrer horizontalement la section */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 105px;
   }
