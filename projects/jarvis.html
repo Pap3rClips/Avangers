@@ -36,7 +36,6 @@
                         </form>
                       </div>
                 </div>
-                </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
                     <p>J.A.R.V.I.S (Just A Rather Very Intelligent System) est un assistant virtuel conçu pour automatiser la gestion de projet et améliorer la productivité des équipes de développement.</p>
@@ -79,7 +78,6 @@ const suggestions = await jarvis.getSuggestions();
         </article>
     </main>
 
-
     <script>
         const apiKey = "9da34235df0343818e3ba571127a0fc7";
         const baseURL = "https://api.aimlapi.com";
@@ -93,7 +91,7 @@ const suggestions = await jarvis.getSuggestions();
         const addMessage = (text, sender) => {
           const message = document.createElement("div");
           message.className = `message ${sender}`;
-          message.textContent = text;
+          message.textContent = sender === 'user' ? `Vous : ${text}` : text;
           messagesContainer.appendChild(message);
           messagesContainer.scrollTop = messagesContainer.scrollHeight;
         };
