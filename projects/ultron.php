@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F.R.I.D.A.Y - Anthony Stark</title>
+    <title>Projet Ultron - Anthony Stark</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/projects.css">
 </head>
@@ -12,9 +12,9 @@
         <div class="nav-content">
             <div class="logo">A.S</div>
             <div class="nav-links">
-                <a href="../index.html">Accueil</a>
-                <a href="../about.html">À propos</a>
-                <a href="../contact.html">Contact</a>
+                <a href="../index.php">Accueil</a>
+                <a href="../about.php">À propos</a>
+                <a href="../contact.php">Contact</a>
             </div>
         </div>
     </nav>
@@ -22,53 +22,53 @@
     <main>
         <article class="project-details">
             <header class="project-header">
-                <h1>F.R.I.D.A.Y</h1>
-                <p class="project-subtitle">Interface de gestion intelligente</p>
+                <h1>Projet Ultron</h1>
+                <p class="project-subtitle">Système de sécurité intelligent</p>
             </header>
 
             <section class="project-overview">
                 <div class="project-image">
-                    <img src="../images/friday.jpg" alt="Interface FRIDAY" id="friday_img">
+                    <img src="../images/ultron.jpg" alt="Interface Ultron" id="ultron_img">
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>F.R.I.D.A.Y est une interface de gestion de tâches intelligente qui utilise l'apprentissage automatique pour optimiser la productivité.</p>
+                    <p>Ultron est un système de sécurité avancé utilisant l'intelligence artificielle pour détecter et prévenir les menaces en temps réel.</p>
                     
                     <h3>Technologies utilisées</h3>
                     <ul class="tech-list">
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>MongoDB</li>
-                        <li>Socket.IO</li>
+                        <li>Python</li>
+                        <li>TensorFlow</li>
+                        <li>OpenCV</li>
+                        <li>FastAPI</li>
                     </ul>
 
                     <h3>Fonctionnalités</h3>
                     <ul>
-                        <li>Planification intelligente</li>
-                        <li>Suggestions contextuelles</li>
-                        <li>Collaboration en temps réel</li>
-                        <li>Analyses prédictives</li>
+                        <li>Détection d'anomalies</li>
+                        <li>Analyse comportementale</li>
+                        <li>Alertes en temps réel</li>
+                        <li>Dashboard sécurisé</li>
                     </ul>
                 </div>
             </section>
 
             <section class="project-details-section">
-                <h2>Interface utilisateur</h2>
+                <h2>Architecture du système</h2>
                 <div class="code-example">
                     <pre><code>
-import { useFriday } from '@friday/core';
+from ultron.core import SecuritySystem
+from ultron.detectors import AnomalyDetector
 
-function TaskManager() {
-    const { tasks, schedule, optimize } = useFriday();
-    
-    return (
-        <div className="dashboard">
-            <TaskList tasks={tasks} />
-            <Timeline schedule={schedule} />
-            <OptimizeButton onClick={optimize} />
-        </div>
-    );
-}
+system = SecuritySystem()
+detector = AnomalyDetector(
+    threshold=0.85,
+    mode='realtime'
+)
+
+@system.on_threat_detected
+async def handle_threat(threat_data):
+    await system.trigger_alert(threat_data)
+    await system.log_incident(threat_data)
                     </code></pre>
                 </div>
             </section>

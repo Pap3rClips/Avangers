@@ -12,9 +12,9 @@
         <div class="nav-content">
             <div class="logo">A.S</div>
             <div class="nav-links">
-                <a href="../index.html">Accueil</a>
-                <a href="../about.html">À propos</a>
-                <a href="../contact.html">Contact</a>
+                <a href="../index.php">Accueil</a>
+                <a href="../about.php">À propos</a>
+                <a href="../contact.php">Contact</a>
             </div>
         </div>
     </nav>
