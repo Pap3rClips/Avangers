@@ -12,9 +12,9 @@
         <div class="nav-content">
             <div class="logo">A.S</div>
             <div class="nav-links">
-                <a href="index.html" class="active">Accueil</a>
-                <a href="about.html">À propos</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.php" class="active">Accueil</a>
+                <a href="about.php">À propos</a>
+                <a href="contact.php">Contact</a>
             </div>
         </div>
     </nav>
@@ -50,27 +50,27 @@
         <section class="projects">
             <h2>Projets Innovants</h2>
             <div class="project-grid">
-                <div class="project-card" onclick="window.location.href='projects/jarvis.html'">
+                <div class="project-card" onclick="window.location.href='projects/jarvis.php'">
                     <h3>J.A.R.V.I.S</h3>
                     <p>Assistant virtuel intelligent pour la gestion de projet</p>
                     <span class="tech-stack">Node.js • AI • API</span>
                 </div>
-                <div class="project-card" onclick="window.location.href='projects/mark.html'">
+                <div class="project-card" onclick="window.location.href='projects/mark.php'">
                     <h3>Mark Framework</h3>
                     <p>Framework JavaScript hautement performant</p>
                     <span class="tech-stack">JavaScript • WebAssembly</span>
                 </div>
-                <div class="project-card" onclick="window.location.href='projects/ultron.html'">
+                <div class="project-card" onclick="window.location.href='projects/ultron.php'">
                     <h3>Projet Ultron</h3>
                     <p>Système de sécurité automatisé</p>
                     <span class="tech-stack">Python • Machine Learning</span>
                 </div>
-                <div class="project-card" onclick="window.location.href='projects/friday.html'">
+                <div class="project-card" onclick="window.location.href='projects/friday.php'">
                     <h3>F.R.I.D.A.Y</h3>
                     <p>Interface de gestion de tâches intelligente</p>
                     <span class="tech-stack">React • Node.js</span>
                 </div>
-                <div class="project-card" onclick="window.location.href='projects/jerico.html'">
+                <div class="project-card" onclick="window.location.href='projects/jerico.php'">
                     <h3>Jerico</h3>
                     <p>assistant virtuel conçu pour la gestion des missions</p>
                     <span class="tech-stack">React • Node.js</span>
