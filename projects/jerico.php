@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
+    <?php 
+        require_once(__DIR__."\..\config\mysql.php");
+        require_once(__DIR__."\..\databaseconnect.php");
+
+        $jericoStatement = $mysqlClient->prepare("SELECT * FROM projets WHERE projet_name='Jerico'");
+        $jericoStatement->execute();
+        $jerico = $jericoStatement->fetchAll();
+
+        $name = $jerico[0]['projet_name'];
+        $description = $jerico[0]['description'];
+        $technoString = $jerico[0]['techno'];
+        $fonctionString = $jerico[0]['fonction'];
+        $technoArray = explode(',', $technoString);
+        $fonctionArray = explode(',', $fonctionString);
+    ?>
+
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -22,7 +38,7 @@
     <main>
         <article class="project-details">
             <header class="project-header">
-                <h1>Jerico</h1>
+                <h1><?php echo $name;?></h1>
                 <p class="project-subtitle">assistant virtuel conçu pour la gestion des missions</p>
             </header>
 
@@ -32,28 +48,35 @@
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>Jerico est un assistant virtuel conçu pour la gestion des missions et l’optimisation des performances des équipes de développement. Ce système permet de suivre l’avancement des projets, d'analyser les performances des tâches en temps réel, et de fournir des recommandations automatiques pour améliorer la productivité et la qualité des projets. Il intègre des outils modernes d'intelligence artificielle pour analyser les données de projet et propose des solutions intelligentes adaptées à chaque contexte.
-                    </p>
+                    <p><?php echo $description;?></p>
                     
                     <h3>Technologies utilisées</h3>
-                    <ul class="tech-list">
-                        <li>Node.js</li>
-                        <li>OpenAI API</li>
-                        <li>WebSocket</li>
-                        <li>Express.js</li>
-                        <li>MongoDB</li>
-                        <li>GitHub API</li>
-                        <li>Jest</li>
-                    </ul>
+                    <?php 
+                        if ($technoString) {
+                            echo "<ul class='tech-list'>";
+                            foreach ($technoArray as $techno) {
+                                echo "<li>" . $techno . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune technologie trouvé.";
+                        }
+                    ?>
 
                     <h3>Fonctionnalités clés</h3>
-                    <ul>
-                        <li>Suivi de l'avancement des missions</li>
-                        <li>Analyse en temps réel des performances</li>
-                        <li>Recommandations automatiques</li>
-                        <li>Gestion intelligente des tâches</li>
-                        <li>Intégration avec GitLab/GitHub</li>
-                    </ul>
+                    <?php 
+                        if ($fonctionString) {
+                            echo "<ul>";
+                            foreach ($fonctionArray as $fonction) {
+                                echo "<li>" . $fonction . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune fonctionnalitée trouvée.";
+                        }
+                    ?>
                 </div>
             </section>
 

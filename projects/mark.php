@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
+    <?php 
+        require_once(__DIR__.'\..\config\mysql.php');
+        require_once(__DIR__.'\..\databaseconnect.php');
+        $markStatement = $mysqlClient->prepare("SELECT * FROM projets WHERE projet_name='Mark Framework'");
+        $markStatement->execute();
+        $mark = $markStatement->fetchAll();
+        $name = $mark[0]['projet_name'];
+        $description = $mark[0]['description'];
+        $technoString = $mark[0]['techno'];
+        $technoArray = explode(',', $technoString);
+        $fonctionString = $mark[0]['fonction'];
+        $fonctionArray = explode(',', $fonctionString);
+    ?>
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -22,7 +35,7 @@
     <main>
         <article class="project-details">
             <header class="project-header">
-                <h1>Mark Framework</h1>
+                <h1><?php echo $name?></h1>
                 <p class="project-subtitle">Framework JavaScript nouvelle génération</p>
             </header>
 
@@ -32,23 +45,36 @@
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>Mark Framework est un framework JavaScript moderne conçu pour offrir des performances exceptionnelles et une expérience de développement optimale.</p>
+                    <p><?php echo $description?></p>
                     
                     <h3>Technologies utilisées</h3>
-                    <ul class="tech-list">
-                        <li>JavaScript</li>
-                        <li>WebAssembly</li>
-                        <li>Rust (compilation)</li>
-                        <li>WebGL</li>
-                    </ul>
+
+                    <?php 
+                        if ($technoString) {
+                            echo "<ul class='tech-list'>";
+                            foreach ($technoArray as $techno) {
+                                echo "<li>" . $techno . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune technologie trouvée.";
+                        }
+                    ?>
 
                     <h3>Caractéristiques</h3>
-                    <ul>
-                        <li>Rendu ultra-rapide</li>
-                        <li>Support WebAssembly natif</li>
-                        <li>Hot Module Replacement</li>
-                        <li>Zero-config</li>
-                    </ul>
+                    <?php 
+                        if ($fonctionString) {
+                            echo "<ul>";
+                            foreach ($fonctionArray as $fonction) {
+                                echo "<li>" . $fonction . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune fonctionnalitée trouvée.";
+                        }
+                    ?>
                 </div>
             </section>
 

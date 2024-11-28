@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
+    <?php
+    require_once(__DIR__ . '\..\config\mysql.php');
+    require_once(__DIR__ . '\..\databaseconnect.php');
+    $jarvisStatement = $mysqlClient->prepare('SELECT * FROM projets WHERE projet_name="J.A.R.V.I.S" ');
+    $jarvisStatement->execute();
+    $jarvis = $jarvisStatement->fetchAll();
+    $technoString = $jarvis[0]['techno'];
+    $technoArray = explode(',', $technoString);
+    $fonctionString = $jarvis[0]['fonction'];
+    $fonctionArray = explode(',', $fonctionString)
+    ?>
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -20,9 +31,10 @@
     </nav>
 
     <main>
+      
         <article class="project-details">
             <header class="project-header">
-                <h1>J.A.R.V.I.S</h1>
+                <h1><?php echo $jarvis[0]['projet_name'];?></h1>
                 <p class="project-subtitle">Assistant virtuel intelligent</p>
             </header>
 
@@ -38,23 +50,29 @@
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>J.A.R.V.I.S (Just A Rather Very Intelligent System) est un assistant virtuel conçu pour automatiser la gestion de projet et améliorer la productivité des équipes de développement.</p>
+                    <p><?php echo $jarvis[0]['description'];?></p>
                     
                     <h3>Technologies utilisées</h3>
-                    <ul class="tech-list">
-                        <li>Node.js</li>
-                        <li>OpenAI API</li>
-                        <li>WebSocket</li>
-                        <li>Express.js</li>
-                    </ul>
+
+                    <?php 
+                    if ($technoString) {
+                      echo '<ul class="tech-list">';
+                      foreach ($technoArray as $techno) {
+                        echo '<li>' . $techno . '</li>';
+                      }
+                      echo '</ul>';
+                    } else {
+                      echo 'Aucune technologie trouvée.';
+                    }?>
 
                     <h3>Fonctionnalités clés</h3>
-                    <ul>
-                        <li>Analyse automatique du code</li>
-                        <li>Suggestions d'optimisation</li>
-                        <li>Gestion des tâches intelligente</li>
-                        <li>Intégration avec GitHub</li>
-                    </ul>
+                    <?php 
+                      echo "<ul>";
+                      foreach ($fonctionArray as $fonction) {
+                        echo "<li>$fonction</li>";
+                      }
+                      echo "</ul>";
+                    ?>
                 </div>
             </section>
 

@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
+
+    <?php 
+    
+    require_once(__DIR__."\..\config\mysql.php");
+    require_once(__DIR__."\..\databaseconnect.php");
+
+    $ultronStatement = $mysqlClient->prepare("SELECT * FROM projets WHERE projet_name='Projet Ultron'");
+    $ultronStatement->execute();
+    $ultron = $ultronStatement->fetchAll();
+
+    $name = $ultron[0]['projet_name'];
+    $description = $ultron[0]['description'];
+    $technoString = $ultron[0]['techno'];
+    $fonctionString = $ultron[0]['fonction'];
+    $technoArray = explode(',',$technoString);
+    $fonctionArray = explode(',', $fonctionString);
+
+    ?>
+
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -22,7 +41,7 @@
     <main>
         <article class="project-details">
             <header class="project-header">
-                <h1>Projet Ultron</h1>
+                <h1><?php echo $name;?></h1>
                 <p class="project-subtitle">Système de sécurité intelligent</p>
             </header>
 
@@ -32,23 +51,30 @@
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>Ultron est un système de sécurité avancé utilisant l'intelligence artificielle pour détecter et prévenir les menaces en temps réel.</p>
+                    <p><?php echo $description;?></p>
                     
                     <h3>Technologies utilisées</h3>
-                    <ul class="tech-list">
-                        <li>Python</li>
-                        <li>TensorFlow</li>
-                        <li>OpenCV</li>
-                        <li>FastAPI</li>
-                    </ul>
+                    <?php 
+                        if ($technoString){
+                            echo "<ul class='tech-list'>";
+                            foreach ($technoArray as $techno) {
+                                echo "<li>" . $techno . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else{
+                            echo "Aucune technologie trouvée.";
+                        }
+                    ?>
 
                     <h3>Fonctionnalités</h3>
-                    <ul>
-                        <li>Détection d'anomalies</li>
-                        <li>Analyse comportementale</li>
-                        <li>Alertes en temps réel</li>
-                        <li>Dashboard sécurisé</li>
-                    </ul>
+                    <?php 
+                    echo "<ul>";
+                    foreach ($fonctionArray as $fonction) {
+                        echo "<li>" . $fonction . "</li>";
+                    }
+                    echo "</ul>";
+                    ?>
                 </div>
             </section>
 

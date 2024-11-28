@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="../css/projects.css">
 </head>
 <body>
+    <?php 
+        require_once(__DIR__."\..\config\mysql.php");
+        require_once(__DIR__."\..\databaseconnect.php");
+
+        $fridayStatement = $mysqlClient->prepare("SELECT * from projets WHERE projet_name='F.R.I.D.A.Y'");
+        $fridayStatement->execute();
+        $friday = $fridayStatement->fetchAll();
+
+        $name = $friday[0]['projet_name'];
+        $description = $friday[0]['description'];
+        $technoString = $friday[0]['techno'];
+        $fonctionString = $friday[0]['fonction'];
+        $technoArray = explode(',', $technoString);
+        $fonctionArray = explode(',', $fonctionString);
+    ?>
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -22,7 +37,7 @@
     <main>
         <article class="project-details">
             <header class="project-header">
-                <h1>F.R.I.D.A.Y</h1>
+                <h1><?php echo $name;?></h1>
                 <p class="project-subtitle">Interface de gestion intelligente</p>
             </header>
 
@@ -32,23 +47,35 @@
                 </div>
                 <div class="project-description">
                     <h2>Vue d'ensemble</h2>
-                    <p>F.R.I.D.A.Y est une interface de gestion de tâches intelligente qui utilise l'apprentissage automatique pour optimiser la productivité.</p>
+                    <p><?php echo $description;?></p>
                     
                     <h3>Technologies utilisées</h3>
-                    <ul class="tech-list">
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>MongoDB</li>
-                        <li>Socket.IO</li>
-                    </ul>
+                    <?php 
+                        if ($technoString) {
+                            echo "<ul class='tech-list'>";
+                            foreach ($technoArray as $techno) {
+                                echo "<li>" . $techno . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune technologie trouvée.";
+                        }
+                    ?>
 
                     <h3>Fonctionnalités</h3>
-                    <ul>
-                        <li>Planification intelligente</li>
-                        <li>Suggestions contextuelles</li>
-                        <li>Collaboration en temps réel</li>
-                        <li>Analyses prédictives</li>
-                    </ul>
+                    <?php 
+                        if ($fonctionString) {
+                            echo "<ul>";
+                            foreach($fonctionArray as $fonction) {
+                                echo "<li>" . $fonction . "</li>";
+                            }
+                            echo "</ul>";
+                        }
+                        else {
+                            echo "Aucune fonctionnalitée trouvée.";
+                        }
+                    ?>
                 </div>
             </section>
 
