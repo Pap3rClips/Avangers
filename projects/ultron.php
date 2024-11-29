@@ -27,13 +27,14 @@
 
     ?>
 
-    <nav>
+<nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
             <div class="nav-links">
-                <a href="../index.php">Accueil</a>
+                <a href="../index.php" class="active">Accueil</a>
                 <a href="../about.php">À propos</a>
                 <a href="../contact.php">Contact</a>
+                <a href="../login.php">Login</a>
             </div>
         </div>
     </nav>
@@ -104,6 +105,5 @@ async def handle_threat(threat_data):
     <footer>
         <p>© 2024 Anthony Stark. Tous droits réservés.</p>
     </footer>
-    <script src="../js/script.js"></script>
 </body>
 </html>

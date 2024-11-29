@@ -25,13 +25,14 @@
 </head>
 <body>
     
-    <nav>
+<nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
             <div class="nav-links">
-                <a href="index.php">Accueil</a>
+                <a href="index.php" >Accueil</a>
                 <a href="about.php">À propos</a>
-                <a href="contact.php" class="active">Contact</a>
+                <a href="contact.php"class="active">Contact</a>
+                <a href="login.php">Login</a>
             </div>
         </div>
     </nav>
@@ -55,7 +56,19 @@
                     </div>
                     <button type="submit">Envoyer</button>
                 </form>
-                <?php
+
+                <div class="contact-info">
+                    <h2>Informations de contact :</h2>
+                <ul>
+                    <li>Email: <?php echo $email; ?></li>
+                    <li>LinkedIn: <?php echo $linkedin; ?></li>
+                    <li>GitHub: <?php echo $github; ?></li>
+                    <li>Téléphone: <?php echo $telephone; ?></li>
+                    <li>Localisation: <?php echo $localisation; ?></li>
+                </div>
+                
+            </div>
+            <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $post_nom = $_POST['name'];
                     $post_email = $_POST['email'];
@@ -67,30 +80,19 @@
                     $sql = "INSERT INTO messages (`nom`, `email` , `message`) VALUES ('$post_nom', '$post_email', '$post_message')";
 
                     if (mysqli_query($connexion, $sql)) {
-                        echo "Nouveau message envoyé";
+                        echo "<div class='success-message'>Nouveau message envoyé avec succès.</div>";
                     } else {
-                        echo "Erreur : " . $sql . "<br>" . mysqli_error($connexion);
+                        echo "<div class='error-message'>Erreur : " . $sql . "<br>" . mysqli_error($connexion) . "</div>";
                     }
                 } else {
                 }
                 ?>
-                <div class="contact-info">
-                    <h2>Informations de contact :</h2>
-                <ul>
-                    <li>Email: <?php echo $email; ?></li>
-                    <li>LinkedIn: <?php echo $linkedin; ?></li>
-                    <li>GitHub: <?php echo $github; ?></li>
-                    <li>Téléphone: <?php echo $telephone; ?></li>
-                    <li>Localisation: <?php echo $localisation; ?></li>
-                </div>
-            </div>
         </section>
     </main>
 
     <footer>
         <p>© 2024 Anthony Stark. Tous droits réservés.</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
 
