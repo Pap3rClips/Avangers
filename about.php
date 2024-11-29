@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <?php
+    require_once(__DIR__."\config\mysql.php");
+    require_once(__DIR__."\databaseconnect.php");
+
+    $aboutStatement = $mysqlClient->prepare("SELECT * FROM about");
+    $aboutStatement->execute();
+    $about= $aboutStatement->fetchAll();
+
+    $description=$about[0]['description'];
+    $parcour=$about[0]['parcour'];
+    $competences=$about[0]['competences'];
+    $competencesArray=explode(',',$competences);
+    ?>
+
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -18,24 +32,29 @@
         </div>
     </nav>
 
+    
+
     <main>
         <section class="about">
             <h1>À propos de moi</h1>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Diplômé en génie informatique du MIT, je suis passionné par l'innovation technologique et le développement de solutions qui changent la vie des gens.</p>
+                    <p><?php echo $description ?></p>
                     <h2>Compétences :</h2>
                     <div class="skills">
-                        <div class="skill">HTML/CSS/JS/PHP</div>
-                        <div class="skill">Python</div>
-                        <div class="skill">React</div>
-                        <div class="skill">Node.js</div>
-                        <div class="skill">AWS</div>
-                        <div class="skill">Linux / Windows</div>
-                        <div class="skill">Machine Learning</div>
-                    </div>
+                        <?php 
+                            if ($competences){
+                                foreach ($competencesArray as $competence){
+                                     echo "<div class='skill'>" . $competence . "</div>";
+                                }                             
+                            }
+                            else{
+                                echo "Aucune competences trouvées.";
+                            }
+                        ?>
+                            </div>
                     <h2>Parcours :</h2>
-                    <p>Avec plus de 5 ans d'expérience dans le développement fullstack, j'ai contribué à des projets innovants dans des domaines variés comme l'IA, la cybersécurité et le développement web.</p>
+                    <p><?php echo $parcour ?></p>
                 </div>
             </div>
         </section>

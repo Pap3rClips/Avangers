@@ -11,8 +11,25 @@ CREATE TABLE IF NOT EXISTS `projets` (
     `fonction` TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `about` (
+    `description` TEXT NOT NULL,
+    `parcour` TEXT NOT NULL,
+    `competences` TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `contact_info` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `email` VARCHAR(255),
+    `linkedin` VARCHAR(255),
+    `github` VARCHAR(255),
+    `telephone` VARCHAR(20),
+    `localisation` VARCHAR(100)
+);
+
+
 -- Removing Old Data
 DELETE FROM `projets`;
+DELETE FROM `about`;
 
 -- Data Insertion
 INSERT INTO `projets` (`projet_name`, `description`, `techno`, `fonction`)
@@ -37,3 +54,12 @@ VALUES
 'Jerico est un assistant virtuel conçu pour la gestion des missions et l’optimisation des performances des équipes de développement. Ce système permet de suivre l’avancement des projets, d`analyser les performances des tâches en temps réel, et de fournir des recommandations automatiques pour améliorer la productivité et la qualité des projets. Il intègre des outils modernes d`intelligence artificielle pour analyser les données de projet et propose des solutions intelligentes adaptées à chaque contexte. ',
 'Node.js,OpenAI API,WebSocket,Express.js,MongoDB,GitHub API,Jest',
 'Suivi de l`avancement des missions,Analyse en temps réel des performances,Recommandations automatiques,Gestion intelligente des tâches,Intégration avec GitLab/GitHub');
+
+INSERT INTO `about` (`description`, `parcour`, `competences`)
+VALUES
+('Diplômé en génie informatique du MIT, je suis passionné par l`innovation technologique et le développement de solutions qui changent la vie des gens.',
+'Avec plus de 5 ans d`expérience dans le développement fullstack, j`ai contribué à des projets innovants dans des domaines variés comme l`IA, la cybersécurité et le développement web',
+'HTML/CSS/JS/PHP,Python,React,Node.js,AWS,Linux / Windows,Machine Learning');
+
+INSERT INTO contact_info (email, linkedin, github, telephone, localisation)
+VALUES ('anthony.stark@jarvis.com', '@anthonystark', '@Anthony-stark', '+33 07 38 68 59 85', 'Paris');
