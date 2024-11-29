@@ -1,29 +1,16 @@
 <?php
-require_once(__DIR__."\config\mysql.php");
-require_once(__DIR__."\databaseconnect.php");
+    require_once(__DIR__."\config\mysql.php");
+    require_once(__DIR__."\databaseconnect.php");
 
-// Récupérer les informations à propos
-$aboutStatement = $mysqlClient->prepare("SELECT * FROM about");
-$aboutStatement->execute();
-$about = $aboutStatement->fetchAll();
+    $contactStatement = $mysqlClient->prepare("SELECT * from contact_info");
+    $contactStatement->execute();
+    $contact = $contactStatement->fetchAll();
 
-// Récupérer les informations de contact
-$contactStatement = $mysqlClient->prepare("SELECT * FROM contact_info LIMIT 1");
-$contactStatement->execute();
-$contact = $contactStatement->fetch();
-
-// Extraire les valeurs
-$description = $about[0]['description'];
-$parcour = $about[0]['parcour'];
-$competences = $about[0]['competences'];
-$competencesArray = explode(',', $competences);
-
-// Extraire les informations de contact
-$email = $contact['email'];
-$linkedin = $contact['linkedin'];
-$github = $contact['github'];
-$telephone = $contact['telephone'];
-$localisation = $contact['localisation'];
+    $email = $contact[0]['email'];
+    $linkedin = $contact[0]['linkedin'];
+    $github = $contact[0]['github'];
+    $telephone = $contact[0]['telephone'];
+    $localisation = $contact[0]['localisation'];
 ?>
 
 <!DOCTYPE html>

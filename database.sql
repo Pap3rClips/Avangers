@@ -69,5 +69,3 @@ VALUES
 
 INSERT INTO contact_info (email, linkedin, github, telephone, localisation)
 VALUES ('anthony.stark@jarvis.com', '@anthonystark', '@Anthony-stark', '+33 07 38 68 59 85', 'Paris');
-
-INSERT INTO `messages` (`nom`, `email`, `message`) VALUES ()
