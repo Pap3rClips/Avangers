@@ -1,5 +1,35 @@
+<?php
+require_once(__DIR__."\config\mysql.php");
+require_once(__DIR__."\databaseconnect.php");
+
+// Récupérer les informations à propos
+$aboutStatement = $mysqlClient->prepare("SELECT * FROM about");
+$aboutStatement->execute();
+$about = $aboutStatement->fetchAll();
+
+// Récupérer les informations de contact
+$contactStatement = $mysqlClient->prepare("SELECT * FROM contact_info LIMIT 1");
+$contactStatement->execute();
+$contact = $contactStatement->fetch();
+
+// Extraire les valeurs
+$description = $about[0]['description'];
+$parcour = $about[0]['parcour'];
+$competences = $about[0]['competences'];
+$competencesArray = explode(',', $competences);
+
+// Extraire les informations de contact
+$email = $contact['email'];
+$linkedin = $contact['linkedin'];
+$github = $contact['github'];
+$telephone = $contact['telephone'];
+$localisation = $contact['localisation'];
+?>
+
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +37,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <?php
+    
+    ?>
     <nav>
         <div class="nav-content">
             <div class="logo">A.S</div>
@@ -38,12 +71,13 @@
                     <button type="submit">Envoyer</button>
                 </form>
                 <div class="contact-info">
-                    <h2>Informations :</h2>
-                    <p>Email: anthony.stark@jarvis.com</p>
-                    <p>LinkedIn: @anthonystark</p>
-                    <p>GitHub: @Anthony-stark</p>
-                    <p>Téléphone: +33 07 38 68 59 85</p>
-                    <p>Localisation : Paris </p>
+                    <h2>Informations de contact :</h2>
+                <ul>
+                    <li>Email: <?php echo $email; ?></li>
+                    <li>LinkedIn: <?php echo $linkedin; ?></li>
+                    <li>GitHub: <?php echo $github; ?></li>
+                    <li>Téléphone: <?php echo $telephone; ?></li>
+                    <li>Localisation: <?php echo $localisation; ?></li>
                 </div>
             </div>
         </section>

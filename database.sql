@@ -26,6 +26,12 @@ CREATE TABLE IF NOT EXISTS `contact_info` (
     `localisation` VARCHAR(100)
 );
 
+CREATE TABLE IF NOT EXISTS `messages` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `nom` VARCHAR(30),
+    `email` VARCHAR(50),
+    `message` TEXT
+);
 
 -- Removing Old Data
 DELETE FROM `projets`;
