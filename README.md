@@ -30,7 +30,6 @@ Bienvenue dans le projet de portfolio interactif d'Anthony Stark, conçu pour me
 - **Front-end :** HTML, CSS, JavaScript.
 - **Back-end :** PHP.
 - **Base de données :** MySQL.
-- **Autres :** Ajax pour des interactions dynamiques.
 
 ---
 
